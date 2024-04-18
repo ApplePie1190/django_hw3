@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block title %}Сортированные заказы{% endblock %} {% block content %}
+<h1>Заказанные товары для пользователя: {{ user.name }}</h1>
+
+<h2>За последние 7 дней (неделю)</h2>
+<ul>
+    {% for product in products_last_week %}
+    <li>{{ product.name }}</li>
+    {% empty %}
+    <li>Нет заказанных товаров за последние 7 дней</li>
+    {% endfor %}
+</ul>
+
+<h2>За последние 30 дней (месяц)</h2>
+<ul>
+    {% for product in products_last_month %}
+    <li>{{ product.name }}</li>
+    {% empty %}
+    <li>Нет заказанных товаров за последние 30 дней</li>
+    {% endfor %}
+</ul>
+
+<h2>За последние 365 дней (год)</h2>
+<ul>
+    {% for product in products_last_year %}
+    <li>{{ product.name }}</li>
+    {% empty %}
+    <li>Нет заказанных товаров за последние 365 дней</li>
+    {% endfor %}
+</ul>
+{% endblock %}

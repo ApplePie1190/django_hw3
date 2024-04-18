@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block title %}Список заказов{% endblock %} {% block content %}
+<h1>Список заказов для пользователя: {{ user.name }}</h1>
+
+{% for order in orders %}
+<h2>Заказ №{{ order.id }} от {{ order.date_ordered }}</h2>
+<ul>
+    {% for product in order.products.all %}
+    <li>
+        {{ product.name }} - {{ product.price }} руб. (Количество: {{ product.quantity }})
+    </li>
+    {% empty %}
+    <li>В этом заказе нет товаров</li>
+    {% endfor %}
+</ul>
+{% empty %}
+<p>У пользователя нет заказов</p>
+{% endfor %}{% endblock %}
